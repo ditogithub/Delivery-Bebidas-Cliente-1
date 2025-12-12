@@ -700,7 +700,8 @@ header {
               </div>
           </div>
           <div style="font-size: 12px; opacity: 0.9;">
-              ⚡ Envie a lista de produtos e endereço • 💬 Respondemos rápido!
+              ⚡ Envie a lista de produtos e endereço • 💬 Respondemos rápido!<br>
+              💳 Se o pagamento for em cartão, 💬 informe pelo whatsapp!
           </div>
       </div>
       <div class="col"><input id="clientName" placeholder="Nome"></div>
@@ -728,15 +729,35 @@ header {
       <button class="btn" style="background:var(--blue);color:#fff" onclick="continuarComprando()">➡️ Continuar comprando</button>
     </div>
 
-    <!-- PIX opção 2 -->
-    <div class="pix-area" id="pixArea">
-      <h3 style="margin:12px 0 6px 0;">Pagamento PIX</h3>
-      <div class="small">Chave PIX: <b id="pixKeyDisplay">--</b></div>
-      <div style="margin-top:8px;">
-        <textarea id="pixPayload" readonly rows="3" style="width:100%; margin-top:6px; padding:6px; border-radius:6px; border:1px solid #ddd;"></textarea>
-        <button class="btn" id="btnCopyPayload" style="margin-top:6px; background:var(--blue); color:#fff;">📋 Copiar código PIX</button>
+    <!-- AVISO SOBRE CARTÃO DE CREDITO -->
+      <div style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      ">
+        <h4 style="color: #0070ba; margin: 10px 0 5px 0;">
+          💳 Aceitamos Cartão!
+        </h4>
+        <div style="font-size: 12px; opacity: 0.9;">
+          ⚡ Envie a lista de produtos e endereço • 💬 Respondemos rápido!<br>
+          💳 Para pagamento com cartão, informe pelo WhatsApp!
+        </div>
       </div>
-    </div>
+
+    <!-- PIX opção 2 -->
+      <div class="pix-area" id="pixArea">
+        <h3 style="margin:12px 0 6px 0;">Pagamento PIX</h3>
+        <div class="small">Chave PIX: <b id="pixKeyDisplay">--</b></div>
+        <div>
+          
+        </div>
+        <div style="margin-top:8px;">
+          <textarea id="pixPayload" readonly rows="3" style="width:100%; margin-top:6px; padding:6px; border-radius:6px; border:1px solid #ddd;"></textarea>
+          <button class="btn" id="btnCopyPayload" style="margin-top:6px; background:var(--blue); color:#fff;">📋 Copiar código PIX</button>
+        </div>
+      </div>
 
   </div>
 </div>
@@ -2303,7 +2324,7 @@ async function enviarWhats() {
     const locationLink = document.getElementById('clientLocation')?.value.trim() || 'Não informado';
     let troco = document.getElementById('clientTroco')?.value.trim() || 'Não precisa de troco';
 
-    let msg = '*🛒 NOVO PEDIDO - HORTIFRUTI* 🛒\n\n';
+    let msg = '*🛒 NOVO PEDIDO - BEBIDAS* 🛒\n\n';
     msg += `*Cliente:* ${name}\n`;
     msg += `*Telefone:* ${phone}\n`;
     msg += `*Endereço:* ${address}\n`;
