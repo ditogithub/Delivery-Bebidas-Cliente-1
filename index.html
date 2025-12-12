@@ -289,13 +289,14 @@ header {
 
 .current-price strong {
   font-size: 20px;
-  color: #000000;
+  color: #25a155;
 }
 
 .old-price {
   font-size: 14px;
+  font-weight: bold;
   color: #fc0000;
-  text-decoration: line-through;
+  text-decoration: line-through; /* tracejado*/
 }
 
 .percent {
@@ -945,6 +946,7 @@ function renderizarProdutosDoCache() {
     card.setAttribute('data-id', p._id);
     
     // Template mantendo a estrutura original
+    // Botões Adicionar , lixeira do catalogo
     card.innerHTML = `
       <img src="${escapeHtml(p.img || 'https://via.placeholder.com/400x300?text=Sem+imagem')}" 
            class="product-img"
@@ -968,13 +970,23 @@ function renderizarProdutosDoCache() {
         <input id="qty_${p._id}" type="number" value="1" min="0.1" step="0.1">
         ${
           cartEnabled
-          ? `<button class="btn btn-add" id="add_${p._id}">+ Carrinho</button>`
-          : `<button class="btn btn-disabled" disabled>⏸️ Carrinho Desativado</button>`
-        }
+        ? `<button class="btn btn-add" id="add_${p._id}" style="display: flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 12px; position: relative;">
+            <span style="font-size: 18px;">🛒</span>
+            ${cartQty > 0 
+              ? `<span style="background: white; color: #df4b10; font-size: 12px; font-weight: bold; padding: 2px 6px; border-radius: 10px; min-width: 18px;">
+                    ${cartQty}
+                  </span>`
+              : `<span>Adicione</span>`
+            }
+          </button>`
+        : `<button class="btn btn-disabled" disabled style="padding: 8px 12px;">
+            ⏸️ Pausado
+          </button>`
+      }
         ${cartQty > 0 ? `<button class="btn btn-remove" id="rem_${p._id}">🗑️</button>` : ""}
       </div>
       <div class="cart-status">
-        ${cartQty > 0 ? `Já no carrinho: <strong>${cartQty}</strong>` : ""}
+        ${cartQty > 0 ? `<strong>Item no carrinho:</strong> <strong>${cartQty}</strong>` : ""}
       </div>
     `;
     
